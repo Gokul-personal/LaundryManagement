@@ -1,0 +1,54 @@
+﻿@* @model LaundryMVC.Models.Order
+
+<h2>Order Summary</h2>
+
+<p>
+    Item:
+    <b>@Model.ItemName</b>
+</p>
+
+<p>
+    Quantity:
+    <b>@Model.Quantity</b>
+</p>
+
+<p>
+    Total Price:
+    <b>₹ @Model.TotalPrice</b>
+</p>
+
+<hr />
+
+<h4>Select Payment Method</h4>
+
+<form asp-controller="Laun" asp-action="Payment" method="post">
+
+    <input type="hidden" asp-for="ItemName" />
+    <input type="hidden" asp-for="Quantity" />
+    <input type="hidden" asp-for="TotalPrice" />
+    <input type="hidden" asp-for="Price" />
+
+    <div>
+        <input type="radio"
+               asp-for="PaymentMethod"
+               value="Cash" />
+        Cash
+    </div>
+
+    <div>
+        <input type="radio"
+               asp-for="PaymentMethod"
+               value="Online" />
+        Online
+    </div>
+
+    <br />
+
+    <button type="submit"
+            class="btn btn-success">
+
+        Confirm Payment
+
+    </button>
+
+</form> *@

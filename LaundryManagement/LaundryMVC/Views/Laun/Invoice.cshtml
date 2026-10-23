@@ -1,0 +1,68 @@
+﻿@* @model LaundryMVC.Models.Order
+
+<h2 style="text-align:center">🧾 Laundry Invoice</h2>
+
+<hr />
+
+<div style="border:1px solid black; padding:20px; width:400px; margin:auto;">
+
+    <p>
+        <b>Item:</b> @Model.ItemName
+    </p>
+
+    <p>
+        <b>Quantity:</b> @Model.Quantity
+    </p>
+
+    <p>
+        <b>Total Price:</b> ₹ @Model.TotalPrice
+    </p>
+
+    <p>
+        <b>Payment Method:</b> @Model.PaymentMethod
+    </p>
+
+    <hr />
+
+    <h4 style="color:green; text-align:center">
+        ✅ Order Confirmed
+    </h4>
+
+</div>
+
+<br />
+
+<div style="text-align:center">
+    <a asp-action="Index"
+       class="btn btn-primary">
+        Order More
+    </a>
+</div>
+<form asp-action="SendInvoiceEmail" method="post">
+    <input type="hidden" asp-for="Email" />
+    <input type="hidden" asp-for="ItemName" />
+    <input type="hidden" asp-for="Quantity" />
+    <input type="hidden" asp-for="TotalPrice" />
+    <input type="hidden" asp-for="PaymentMethod" />
+
+    <button type="submit" class="btn btn-success">
+        Send Invoice to Email
+    </button>
+</form>
+<form asp-action="DownloadInvoicePdf" method="post">
+    <input type="hidden" asp-for="ItemName" />
+    <input type="hidden" asp-for="Quantity" />
+    <input type="hidden" asp-for="TotalPrice" />
+    <input type="hidden" asp-for="PaymentMethod" />
+    <input type="hidden" asp-for="Email" />
+
+    <button type="submit" class="btn btn-primary">
+        Download Invoice PDF
+    </button>
+</form>
+@if (TempData["Message"] != null)
+{
+    <p style="color:green; text-align:center">
+        @TempData["Message"]
+    </p>
+} *@
